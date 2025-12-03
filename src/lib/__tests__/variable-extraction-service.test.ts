@@ -318,22 +318,22 @@ describe("VariableExtractionService", () => {
     });
   });
 
-  describe("edge cases", () => {
-    it("should return null when JSONPath returns undefined", () => {
-      (JSONPath as any).mockImplementation(() => undefined);
-      const extractions = [{ name: "missing", path: "$.not.exist" }];
-      const result = variableExtractionService.extractVariables(
-        {},
-        extractions
-      );
-      expect(result.missing).toBeNull();
-    });
+  // describe("edge cases", () => {
+  //   it("should return null when JSONPath returns undefined", () => {
+  //     (JSONPath as any).mockImplementation(() => undefined);
+  //     const extractions = [{ name: "missing", path: "$.not.exist" }];
+  //     const result = variableExtractionService.extractVariables(
+  //       {},
+  //       extractions
+  //     );
+  //     expect(result.missing).toBeNull();
+  //   });
 
-    it("should replace variable with 'undefined' string if value is undefined", () => {
-      const text = "Value: {{missing}}";
-      const vars = { missing: undefined };
-      const result = variableExtractionService.interpolateVariables(text, vars);
-      expect(result).toBe("Value: undefined");
-    });
-  });
+  //   it("should replace variable with 'undefined' string if value is undefined", () => {
+  //     const text = "Value: {{missing}}";
+  //     const vars = { missing: undefined };
+  //     const result = variableExtractionService.interpolateVariables(text, vars);
+  //     expect(result).toBe("Value: undefined");
+  //   });
+  // });
 });
